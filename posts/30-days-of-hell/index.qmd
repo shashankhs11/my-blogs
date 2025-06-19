@@ -1,0 +1,15 @@
+---
+title: "30 Days of Hell Out There"
+listing: 
+  contents: . 
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [title, date, categories, description]
+---
+
+Welcome to **30 Days of Hell Out There** — a raw journal of grinding, learning, and building through the hardest stretch of my tech career.
+
+Each post is a day in the fight.
+
+Start reading below.

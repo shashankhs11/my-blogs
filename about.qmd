@@ -1,0 +1,16 @@
+---
+title: "Shashank Hosahalli Shivamurthy"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/hs-shashank
+    - icon: github
+      text: Github
+      href: https://github.com/shashankhs11
+
+---
+
+About this blog

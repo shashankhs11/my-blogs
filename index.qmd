@@ -1,0 +1,17 @@
+---
+title: "Still Swinging"
+page-layout: full
+title-block-banner: false
+format: html
+listing:
+  contents: posts/30-days-of-hell/index.qmd
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---  
+
+*A personal and tech blog about rebuilding - one commit at a time.*
+
+Welcome to the grind.

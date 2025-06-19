@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "Shashank's Blogs"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "30 Days of Hell"
+        href: posts/30-days-of-hell/index.qmd
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/shashankhs11
+      - icon: linkedin
+        href: https://linkedin.com/in/hs-shashank
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
