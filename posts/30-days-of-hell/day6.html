@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shashank Hosahalli Shivamurthy">
+<meta name="dcterms.date" content="2025-06-24">
+<meta name="description" content="Hackathon video, Flink webinar, report work, and a new idea brewing">
 
-<title>30 Days of Hell Out There – Shashank’s Blogs</title>
+<title>Day 6 - Sleep Deprived but Still Going – Shashank’s Blogs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +96,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/30-days-of-hell/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts/30-days-of-hell/index.html"> 
 <span class="menu-text">30 Days of Hell</span></a>
   </li>  
 </ul>
@@ -183,22 +126,37 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">30 Days of Hell Out There</h1>
+<h1 class="title">Day 6 - Sleep Deprived but Still Going</h1>
 </div>
 
+<div>
+  <div class="description">
+    Hackathon video, Flink webinar, report work, and a new idea brewing
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shashank Hosahalli Shivamurthy </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 24, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -208,160 +166,43 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to <strong>30 Days of Hell Out There</strong> — a raw journal of grinding, learning, and building through the hardest stretch of my tech career.</p>
-<p>Each post is a day in the fight.</p>
-<p>Start reading below.</p>
+<section id="day-6---sleep-deprived-but-still-going" class="level2">
+<h2 class="anchored" data-anchor-id="day-6---sleep-deprived-but-still-going">Day 6 - Sleep Deprived but Still Going</h2>
+<p>Woke up early but with a headache. Slept late last night but I was so used to my routine of waking up early, that I just woke up.<br>
+Guess I’m just going to be a little sleep deprived today.</p>
+<p>Started off the day with the <strong>daily ritual</strong>.</p>
+<hr>
+<p>Had to record a <strong>video for the hackathon submission</strong>.<br>
+Even though the deadline was yesterday, we were still allowed to make changes to the video.</p>
+<p>Please feel free to check it out here → <a href="https://youtu.be/eAr4hn_Mw8Q?feature=shared"><strong>YouTube</strong></a></p>
+<hr>
+<p>Registered for a <strong>webinar with Confluent</strong> on <strong>Data Streaming with Apache Flink</strong>.</p>
+<p>Now I finally understand what Flink is for and how it fits into the bigger picture.<br>
+Really insightful session with lots of <strong>key takeaways and learning</strong>.</p>
+<hr>
+<p>Took 15 minutes to <strong>meditate</strong> - just helped center things a bit, I guess.</p>
+<hr>
+<p>Spent time working on feedback for my <strong>PRs</strong> and addressing the <strong>report feedback</strong> from our mentor.<br>
+Tomorrow’s the final <strong>submission date for the data product and report</strong>, so I’ve just been finishing things up.<br>
+Wrapped up all the parts I was responsible for.</p>
+<hr>
+<p>Got a pretty decent <strong>project idea</strong> today that I’m actually excited about.</p>
+<p>Sketched out a very <strong>high-level design</strong> and the main components.<br>
+Planning to build a <strong>prototype by the weekend</strong>, let’s see how that goes.</p>
+<hr>
+<p>Also, a small rant lol, my <strong>left Shift key stopped working properly</strong>. Very very annoying.</p>
+<p>Had to do a couple more <strong>flow diagrams</strong> for the project report.<br>
+Now I <em>should</em> be done… hopefully.</p>
+<hr>
+<p>Overall, a <strong>decent day</strong>.<br>
+Mostly report work, but the new project idea has got me hyped.<br>
+Now I have got something to look forward to.</p>
+<p><strong>Let’s build that shit!!!!!</strong></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1750748400000" data-listing-file-modified-sort="1750823085342" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="271">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day6.html" class="no-external">Day 6 - Sleep Deprived but Still Going</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day6.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day6.html" class="no-external">Hackathon video, Flink webinar, report work, and a new idea brewing</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day6.html" class="no-external">
-<div class="listing-date">
-Jun 24, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1750662000000" data-listing-file-modified-sort="1750740432864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day5.html" class="no-external">Day 5 - IELTS and Final Report Done</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day5.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day5.html" class="no-external">IELTS exam day, hackathon wrap-up, and capstone completion</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day5.html" class="no-external">
-<div class="listing-date">
-Jun 23, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1750575600000" data-listing-file-modified-sort="1750740163874" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="214">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day4.html" class="no-external">Day 4 - Submissions, Reports, and a Mock</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day4.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day4.html" class="no-external">Hackathon wrap-up, capstone report, and IELTS prep</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day4.html" class="no-external">
-<div class="listing-date">
-Jun 22, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1750489200000" data-listing-file-modified-sort="1750568611287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day3.html" class="no-external">Day 3 - Good Sleep, Good Learnings</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day3.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day3.html" class="no-external">Tried a lot of stuff today, learned a bunch</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day3.html" class="no-external">
-<div class="listing-date">
-Jun 21, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1750402800000" data-listing-file-modified-sort="1750468531296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="249">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day2.html" class="no-external">Day 2 - Just One of Those Days I guess</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day2.html" class="no-external">Busy day, not super productive, but still showing up</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day2.html" class="no-external">
-<div class="listing-date">
-Jun 20, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1750316400000" data-listing-file-modified-sort="1750389244102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="611">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day1.html" class="no-external">Day 1 IT IS</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day1.html" class="no-external">Pretty productive Day 1</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day1.html" class="no-external">
-<div class="listing-date">
-Jun 19, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1750230000000" data-listing-file-modified-sort="1750296289880" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="299">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/30-days-of-hell/day0.html" class="no-external">Day 0 - Made a Promise</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/30-days-of-hell/day0.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/30-days-of-hell/day0.html" class="no-external">The beginning of “30 Days of Hell Out There”: hopefully, a raw, personal journey of building, learning, and fighting back.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/30-days-of-hell/day0.html" class="no-external">
-<div class="listing-date">
-Jun 18, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
