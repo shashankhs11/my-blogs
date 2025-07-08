@@ -168,6 +168,62 @@
     "text": "Woke up after a good night’s sleep.\nSpoke to my uncle and parents for a while, then had to get ready for a cricket match.\n\nThe entire day was just cricket, no project work or learning.\nIt was hot and sunny.\nPerfect weather for a cricket match.\n\nThe match was awesome, it was intense af.\nWe were put in to bat first, and we had a clear plan.\nEverything went exactly as expected and we were pretty happy with our innings.\nI couldn’t contribute much with the bat today, a bit disappointing.\nBut that’s okay. The team is amazing, and it just feels really good to be part of it.\nI still owe the team a match winning innings definitely and I believe that I am capable of doing it.\n\nWe defended the target, but it was super tense.\nLots of turning points, literally nail biting stuff.\nBut the best part? It was a complete team effort.\nEvery single person stepped up. Very very grateful to be a part of it.\n\nThe part I loved the most came after the match, we just grabbed a beer, and our captain addressed the team.\nFelt so good to be in that moment.\nThis is what we all play for, passion, camaraderie, and team spirit.\nEveryone genuinely cares about the game and each other.\nDream team, fr.\n\nIt was a long, hot day. Out in the sun the entire time.\nCame back totally exhausted and just crashed.\nAwesome day."
   },
   {
+    "objectID": "posts/learning-kafka/day0.html",
+    "href": "posts/learning-kafka/day0.html",
+    "title": "Day 0 - The Commitment to Kafka",
+    "section": "",
+    "text": "Starting today, I am making another commitment to learn Apache Kafka in depth.\nThe idea is to:\n\nLearn about Kafka deeply\nAsk questions along the way\nLearn consistently\nPost on Twitter, maybe?\nWrite blog entries\nProgress little by little, every day\n\nThe goal is to:\n\nFamiliarize myself with the internals of Kafka\nUnderstand distributed systems in depth\nEventually contribute to the Apache Kafka open source repository\n\n\n\n\nRead Kafka: The Definitive Guide\nWatch videos or tutorials if needed\nPost learnings on Twitter\nDocument daily notes in my personal blog"
+  },
+  {
+    "objectID": "posts/learning-kafka/day0.html#day-0",
+    "href": "posts/learning-kafka/day0.html#day-0",
+    "title": "Day 0 - The Commitment to Kafka",
+    "section": "",
+    "text": "Starting today, I am making another commitment to learn Apache Kafka in depth.\nThe idea is to:\n\nLearn about Kafka deeply\nAsk questions along the way\nLearn consistently\nPost on Twitter, maybe?\nWrite blog entries\nProgress little by little, every day\n\nThe goal is to:\n\nFamiliarize myself with the internals of Kafka\nUnderstand distributed systems in depth\nEventually contribute to the Apache Kafka open source repository\n\n\n\n\nRead Kafka: The Definitive Guide\nWatch videos or tutorials if needed\nPost learnings on Twitter\nDocument daily notes in my personal blog"
+  },
+  {
+    "objectID": "posts/learning-kafka/day0.html#day-0-notes",
+    "href": "posts/learning-kafka/day0.html#day-0-notes",
+    "title": "Day 0 - The Commitment to Kafka",
+    "section": "Day 0 Notes",
+    "text": "Day 0 Notes\nStarted reading Kafka: The Definitive Guide\n\nKafka is all about Data in Motion\nKafka began as a commit log\nMost popular use cases for Kafka:\n\nMessage buses for event-driven microservices\nStream processing applications\nLarge-scale data pipelines\n\n\n\nOne of the problems in software engineering is that there is always more than one way to do anything.\n— Kafka: The Definitive Guide\n\nThat’s all for today.\nTomorrow, I will begin with:\nChapter 1. Meet Kafka"
+  },
+  {
+    "objectID": "posts/learning-kafka/index.html",
+    "href": "posts/learning-kafka/index.html",
+    "title": "Learning Kafka",
+    "section": "",
+    "text": "Diving into Apache Kafka — everyday learning journey through concepts, challenges, and real-world applications.\nEach day unpacks a new learning, building my understanding step by step.\nIt’s all about that “Data in Motion”. Let’s get started.\n\n\n\n\n\n\n\n\n\nDay 1 - Introduction to Apache Kafka\n\n\n\n\n\nIntroduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.\n\n\n\n\n\nJul 7, 2025\n\n\n\n\n\n\n\nDay 0 - The Commitment to Kafka\n\n\n\n\n\nKickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.\n\n\n\n\n\nJul 6, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/learning-kafka/day1.html",
+    "href": "posts/learning-kafka/day1.html",
+    "title": "Day 1 - Introduction to Apache Kafka",
+    "section": "",
+    "text": "I started reading this book\nThis is what I learnt today and the content is below."
+  },
+  {
+    "objectID": "posts/learning-kafka/day1.html#chapter-1-meet-kafka",
+    "href": "posts/learning-kafka/day1.html#chapter-1-meet-kafka",
+    "title": "Day 1 - Introduction to Apache Kafka",
+    "section": "Chapter 1: Meet Kafka",
+    "text": "Chapter 1: Meet Kafka\nSo, it’s all about data. Every application is data driven. Every piece of data has some story to tell.\nThe less effort we spend on moving the data around, the more we can focus on the core business at hand. This is why the pipeline is a critical component in the data-driven enterprise.\nHow we move the data becomes nearly as important as the data itself.\n\n“Any time scientists disagree, it’s because we have insufficient data. Then we can agree on what kind of data to get; we get the data; and the data solves the problem. Either I’m right, or you’re right, or we’re both wrong. And we move on.” — Neil deGrasse Tyson\n\n\nWhat is Pub/Sub Messaging?\n\nPublisher sends messages.\nSubscriber subscribes to certain classes of messages.\nPublisher is not directly targeting the subscriber.\nIn large organizations, multiple pub/sub systems are used for queuing data.\nA centralized system to publish generic types of data is often lacking — Kafka solves this."
+  },
+  {
+    "objectID": "posts/learning-kafka/day1.html#kafka-distributed-streaming-platform",
+    "href": "posts/learning-kafka/day1.html#kafka-distributed-streaming-platform",
+    "title": "Day 1 - Introduction to Apache Kafka",
+    "section": "Kafka: Distributed Streaming Platform",
+    "text": "Kafka: Distributed Streaming Platform\n\nKafka stores data durably and in order.\nData can be read deterministically.\nKafka acts as a central data pipeline.\n\n\nMessages and Batches\n\nUnit of data = message\n\nAn array of bytes (Kafka doesn’t interpret format).\n\nMessages can have a key (optional metadata).\n\nUsed for controlled message distribution across partitions.\n\nKey-based partitioning:\n\nUse a consistent hash of the key.\nPartition = hash(key) % total_partitions\nEnsures all messages with the same key go to the same partition.\nWorks only if partition count remains fixed.\n\nMessages are written in batches.\n\nA batch = collection of messages for the same topic and partition.\nBatching improves throughput but increases latency.\nTradeoff: Larger batches = more messages per unit time, but slower propagation for single messages.\n\n\n\n\nSchemas\n\nSchema = data structure definition (e.g., JSON, XML, Avro).\nApache Avro:\n\nSerialization framework.\nSupports schema evolution (forward + backward compatibility).\nIdeal for Kafka use cases.\n\nConsistent data format allows for decoupling of producers and consumers.\nSchema Registry is often used to manage shared schemas.\n\n\n\nTopics\n\nMessages are grouped into topics.\n\nThink of a topic like a database table.\n\nTopics are split into partitions.\n\nEach partition = append-only log.\nMessages within a partition are ordered.\n\nA topic can have many partitions:\n\nEnsures horizontal scalability and high throughput.\nNo global ordering across partitions.\n\nPartitions can be replicated:\n\nFor fault tolerance.\nOne partition = multiple replicas on different brokers.\n\nKafka Streams = logical view of topic data.\n\nA stream = sequence of records in a topic."
+  },
+  {
+    "objectID": "posts/learning-kafka/day1.html#kafka-clients",
+    "href": "posts/learning-kafka/day1.html#kafka-clients",
+    "title": "Day 1 - Introduction to Apache Kafka",
+    "section": "Kafka Clients",
+    "text": "Kafka Clients\n\nProducers\n\nProducers write messages to Kafka topics.\nKafka client APIs:\n\nBasic producers (write code manually).\nKafka Connect (ETL-style connectors).\n\nDefault behavior: evenly distribute messages across partitions.\nKey-based targeting:\n\nProducer uses the key to determine partition via hashing.\n\n\n\n\nConsumers\n\nConsumers read messages from Kafka topics.\nAlso called subscribers or readers.\nRead order is preserved within a partition.\nConsumers track message offsets.\n\nOffset = unique, increasing integer per partition.\n\nEach consumer stores the last committed offset.\n\nHelps resume from last read in case of failure.\n\n\n\n\nConsumer Groups\n\nGroup of consumers collaboratively consuming a topic.\nEach partition is consumed by only one member in a group.\nThis mapping is called ownership of the partition.\nIf a consumer fails:\n\nKafka reassigns its partitions to remaining consumers in the group.\n\n\n\nAttribution: Kafka: The Definitive Guide by Gwen Shapira, Todd Palino, Rajini Sivaram, and Krit Petty (O’Reilly). Copyright 2021 Chen Shapira, Todd Palino, Rajini Sivaram, and Krit Petty, 978-1-491-93616-0."
+  },
+  {
     "objectID": "posts/30-days-of-hell/day10.html",
     "href": "posts/30-days-of-hell/day10.html",
     "title": "Day 10 - Deployments, Temple, and Chill",
@@ -319,6 +375,6 @@
     "href": "index.html",
     "title": "Still Swinging",
     "section": "",
-    "text": "A personal and tech blog about rebuilding - one commit at a time.\nWelcome to the grind.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n30 Days of Hell Out There\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "A personal and tech blog about rebuilding - one commit at a time.\nWelcome to the grind.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n30 Days of Hell Out There\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLearning Kafka\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

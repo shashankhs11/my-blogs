@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/posts/learning-kafka/index.html",
+    "items": [
+      "/posts/learning-kafka/day1.html",
+      "/posts/learning-kafka/day0.html"
+    ]
+  },
+  {
     "listing": "/posts/30-days-of-hell/index.html",
     "items": [
       "/posts/30-days-of-hell/day18.html",
@@ -26,7 +33,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/30-days-of-hell/index.html"
+      "/posts/30-days-of-hell/index.html",
+      "/posts/learning-kafka/index.html"
     ]
   }
 ]
