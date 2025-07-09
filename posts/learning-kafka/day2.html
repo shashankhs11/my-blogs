@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shashank Hosahalli Shivamurthy">
+<meta name="dcterms.date" content="2025-07-08">
+<meta name="description" content="Learning about Kafka brokers, cluster architecture, leaders and followers, and message retention.">
 
-<title>Learning Kafka – Shashank’s Blogs</title>
+<title>Day 2 - Kafka Brokers, Clusters, and Retention – Shashank’s Blogs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,7 +100,7 @@ window.Quarto = {
 <span class="menu-text">30 Days of Hell</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/learning-kafka/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts/learning-kafka/index.html"> 
 <span class="menu-text">Learning Apache Kafka</span></a>
   </li>  
 </ul>
@@ -187,22 +130,37 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learning Kafka</h1>
+<h1 class="title">Day 2 - Kafka Brokers, Clusters, and Retention</h1>
 </div>
 
+<div>
+  <div class="description">
+    Learning about Kafka brokers, cluster architecture, leaders and followers, and message retention.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shashank Hosahalli Shivamurthy </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -212,80 +170,94 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Diving into Apache Kafka</strong> — everyday learning journey through concepts, challenges, and real-world applications.</p>
-<p>Each day unpacks a new learning, building my understanding step by step.</p>
-<p>It’s all about that “Data in Motion”. Let’s get started.</p>
+<section id="day-2---kafka-brokers-clusters-and-retention" class="level2">
+<h2 class="anchored" data-anchor-id="day-2---kafka-brokers-clusters-and-retention">Day 2 - Kafka Brokers, Clusters, and Retention</h2>
+<p>Continuing from where I left off yesterday, diving deeper into <strong>Chapter 1</strong> of <em>Kafka: The Definitive Guide</em>.</p>
+<section id="brokers" class="level3">
+<h3 class="anchored" data-anchor-id="brokers">Brokers</h3>
+<ul>
+<li>A single instance of a Kafka server is called a <strong>broker</strong>.</li>
+<li>The broker handles:
+<ul>
+<li>Receiving messages from producers</li>
+<li>Assigning offsets to messages</li>
+<li>Writing messages to disk</li>
+<li>Responding to consumer requests for partitions</li>
+</ul></li>
+<li>Each broker manages multiple <strong>partitions</strong>.</li>
+<li>Kafka brokers operate as part of a <strong>cluster</strong> by default.</li>
+</ul>
+</section>
+<section id="cluster" class="level3">
+<h3 class="anchored" data-anchor-id="cluster">Cluster</h3>
+<ul>
+<li>A <strong>cluster</strong> is a group of Kafka brokers working together.</li>
+<li>One broker in the cluster acts as the <strong>controller</strong>.
+<ul>
+<li>The controller is <strong>automatically elected</strong> from live brokers.</li>
+<li>Responsibilities include:
+<ul>
+<li>Assigning partitions to brokers</li>
+<li>Monitoring broker failures</li>
+</ul></li>
+</ul></li>
+<li>Before Kafka 4.0:
+<ul>
+<li><strong>Apache ZooKeeper</strong> was used to manage metadata and broker coordination.</li>
+</ul></li>
+<li>Now (in KRaft mode):
+<ul>
+<li>Kafka brokers <strong>self-manage metadata</strong></li>
+<li>This is done using <strong>Raft</strong> — a consensus algorithm for distributed state replication.</li>
+</ul></li>
+</ul>
+</section>
+<section id="leaders-and-followers" class="level3">
+<h3 class="anchored" data-anchor-id="leaders-and-followers">Leaders and Followers</h3>
+<ul>
+<li>Each partition has a <strong>leader</strong> — a single broker responsible for that partition.</li>
+<li>Additional brokers are assigned as <strong>followers</strong> of that partition.</li>
+<li>Replication enables:
+<ul>
+<li><strong>Redundancy</strong> of data</li>
+<li><strong>Failover</strong> support — followers can take over as leader if needed</li>
+</ul></li>
+<li>Producers:
+<ul>
+<li>Must send data <strong>only to the leader</strong> of the partition</li>
+</ul></li>
+<li>Consumers:
+<ul>
+<li>Can read from <strong>either the leader or the followers</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-retention" class="level3">
+<h3 class="anchored" data-anchor-id="data-retention">Data Retention</h3>
+<ul>
+<li>Kafka’s key feature is <strong>durable retention</strong> of messages.</li>
+<li>Brokers are configured with <strong>default retention policies</strong>:
+<ul>
+<li>Retention based on <strong>time</strong> (e.g., 7 days)</li>
+<li>Retention based on <strong>size</strong> (e.g., 1 GB per partition)</li>
+</ul></li>
+<li>Once retention limits are hit:
+<ul>
+<li>Old messages are <strong>deleted</strong></li>
+</ul></li>
+<li>Individual topics can override global retention settings.</li>
+<li>Special case: <strong>Log Compaction</strong>
+<ul>
+<li>Kafka retains only the <strong>latest message</strong> for each unique key.</li>
+<li>Useful for <strong>changelog</strong> or <strong>stateful updates</strong>.</li>
+</ul></li>
+</ul>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1751958000000" data-listing-file-modified-sort="1752025010942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Day 2 - Kafka Brokers, Clusters, and Retention</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Learning about Kafka brokers, cluster architecture, leaders and followers, and message retention.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">
-<div class="listing-date">
-Jul 8, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1751871600000" data-listing-file-modified-sort="1751939062256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="635">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Day 1 - Introduction to Apache Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Introduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">
-<div class="listing-date">
-Jul 7, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1751785200000" data-listing-file-modified-sort="1751937252786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Day 0 - The Commitment to Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day0.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Kickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">
-<div class="listing-date">
-Jul 6, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

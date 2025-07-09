@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shashank Hosahalli Shivamurthy">
+<meta name="dcterms.date" content="2025-07-08">
+<meta name="description" content="Morning run, TA lecture on InfoSec, some DSA, Kafka, and job apps">
 
-<title>Learning Kafka – Shashank’s Blogs</title>
+<title>Day 20 - TA Lecture, Leetcode &amp; Logged My Run – Shashank’s Blogs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,7 +100,7 @@ window.Quarto = {
 <span class="menu-text">30 Days of Hell</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/learning-kafka/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts/learning-kafka/index.html"> 
 <span class="menu-text">Learning Apache Kafka</span></a>
   </li>  
 </ul>
@@ -187,22 +130,37 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learning Kafka</h1>
+<h1 class="title">Day 20 - TA Lecture, Leetcode &amp; Logged My Run</h1>
 </div>
 
+<div>
+  <div class="description">
+    Morning run, TA lecture on InfoSec, some DSA, Kafka, and job apps
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shashank Hosahalli Shivamurthy </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -212,80 +170,60 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Diving into Apache Kafka</strong> — everyday learning journey through concepts, challenges, and real-world applications.</p>
-<p>Each day unpacks a new learning, building my understanding step by step.</p>
-<p>It’s all about that “Data in Motion”. Let’s get started.</p>
+<section id="day-20---ta-lecture-leetcode-logged-my-run" class="level2">
+<h2 class="anchored" data-anchor-id="day-20---ta-lecture-leetcode-logged-my-run">Day 20 - TA Lecture, Leetcode &amp; Logged My Run</h2>
+<p>Woke up <strong>early again today</strong>. Slowly building a routine.</p>
+<p>Did a short <strong>full-body conditioning</strong> session (~20 minutes), and then went for a <strong>quick run</strong>.</p>
+<p>Ran <strong>4k</strong> — not bad at all 💪<br>
+Starting today, I’m going to <strong>log my runs and walks</strong> regularly.</p>
+<p>📍 <a href="https://strava.app.link/p1EedmD4PUb">Strava Run Link</a></p>
+<hr>
+<p>Came back, showered, made coffee, and spoke to my mom before heading out to <strong>university</strong>.</p>
+<p>Had my <strong>TA lecture</strong> today.<br>
+Topic was <strong>Information Security</strong> — a few new concepts and terms I noted:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Stuxnet"><strong>Stuxnet</strong></a></li>
+<li><strong>Social Engineering</strong></li>
+<li><strong>STRIDE</strong> and <strong>DREAD</strong> threat modeling frameworks</li>
+</ul>
+<p>Interesting stuff!</p>
+<hr>
+<p>Stayed on campus for a while and then came back home.</p>
+<hr>
+<section id="leetcode-practice" class="level3">
+<h3 class="anchored" data-anchor-id="leetcode-practice">Leetcode Practice</h3>
+<p>Revisited <a href="https://leetcode.com/problems/maximum-subarray/"><strong>53. Maximum Subarray</strong></a><br>
+- Just reinforced Kadane’s Algorithm<br>
+- Starting to feel more natural now</p>
+<p>Then solved <a href="https://leetcode.com/problems/merge-intervals/"><strong>56. Merge Intervals</strong></a></p>
+<ul>
+<li>Initially assumed the input was sorted — turns out it wasn’t<br>
+</li>
+<li>So sorting first is essential<br>
+</li>
+<li>But my approach still made sense and worked after that step</li>
+</ul>
+<blockquote class="blockquote">
+<p>For some reason, I instinctively feel like I’ll be asked <strong>one of these</strong> in a future interview, lol.</p>
+</blockquote>
+<hr>
+</section>
+<section id="kafka-learning" class="level3">
+<h3 class="anchored" data-anchor-id="kafka-learning">Kafka Learning</h3>
+<p>Continued with my <strong>Kafka deep dive</strong>.</p>
+<p>🧠 <a href="../../posts/learning-kafka/day2.html">Kafka Day 2 Blog/Notes</a></p>
+<p>Just documenting daily learnings so it’s easier to <strong>revise and reflect</strong>.</p>
+<hr>
+<p>Wrapped up the evening by applying to a few more <strong>jobs</strong> and went to bed early.</p>
+<hr>
+<p>Got <strong>everything I wanted to do</strong> done today.<br>
+Feeling good. Small wins.</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1751958000000" data-listing-file-modified-sort="1752025010942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Day 2 - Kafka Brokers, Clusters, and Retention</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Learning about Kafka brokers, cluster architecture, leaders and followers, and message retention.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">
-<div class="listing-date">
-Jul 8, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1751871600000" data-listing-file-modified-sort="1751939062256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="635">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Day 1 - Introduction to Apache Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Introduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">
-<div class="listing-date">
-Jul 7, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1751785200000" data-listing-file-modified-sort="1751937252786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Day 0 - The Commitment to Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day0.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Kickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">
-<div class="listing-date">
-Jul 6, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
