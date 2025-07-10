@@ -217,6 +217,41 @@
     "text": "Day 0 Notes\nStarted reading Kafka: The Definitive Guide\n\nKafka is all about Data in Motion\nKafka began as a commit log\nMost popular use cases for Kafka:\n\nMessage buses for event-driven microservices\nStream processing applications\nLarge-scale data pipelines\n\n\n\nOne of the problems in software engineering is that there is always more than one way to do anything.\n— Kafka: The Definitive Guide\n\nThat’s all for today.\nTomorrow, I will begin with:\nChapter 1. Meet Kafka"
   },
   {
+    "objectID": "posts/learning-kafka/day3.html",
+    "href": "posts/learning-kafka/day3.html",
+    "title": "Day 3 - Diving into Apache Kafka Streams Internals",
+    "section": "",
+    "text": "Today, I decided to shift gears from theory to hands-on learning.\nSince I already have experience using Kafka in enterprise applications, I wanted to go deeper and explore Kafka’s internal codebase — specifically the open-source Apache Kafka GitHub repository.\nI started looking for beginner-friendly issues and found one under the Kafka Streams module.\n\n\n\nKafka Streams is a client library for building real-time, event-driven applications and microservices using Apache Kafka.\n\nIt allows developers to process and analyze data stored in Kafka.\nYou can perform operations like filtering, mapping, joining, grouping, and windowing — all on Kafka topics.\nIt is lightweight, has no separate cluster, and runs within your application process.\nYou get exactly-once semantics, fault tolerance, and scalability, right out of the box.\n\n\nKafka Streams turns raw event data into actionable, real-time insights within your application."
+  },
+  {
+    "objectID": "posts/learning-kafka/day3.html#day-3---kafka-streams-and-first-oss-exploration",
+    "href": "posts/learning-kafka/day3.html#day-3---kafka-streams-and-first-oss-exploration",
+    "title": "Day 3 - Diving into Apache Kafka Streams Internals",
+    "section": "",
+    "text": "Today, I decided to shift gears from theory to hands-on learning.\nSince I already have experience using Kafka in enterprise applications, I wanted to go deeper and explore Kafka’s internal codebase — specifically the open-source Apache Kafka GitHub repository.\nI started looking for beginner-friendly issues and found one under the Kafka Streams module.\n\n\n\nKafka Streams is a client library for building real-time, event-driven applications and microservices using Apache Kafka.\n\nIt allows developers to process and analyze data stored in Kafka.\nYou can perform operations like filtering, mapping, joining, grouping, and windowing — all on Kafka topics.\nIt is lightweight, has no separate cluster, and runs within your application process.\nYou get exactly-once semantics, fault tolerance, and scalability, right out of the box.\n\n\nKafka Streams turns raw event data into actionable, real-time insights within your application."
+  },
+  {
+    "objectID": "posts/learning-kafka/day3.html#the-issue-i-worked-on",
+    "href": "posts/learning-kafka/day3.html#the-issue-i-worked-on",
+    "title": "Day 3 - Diving into Apache Kafka Streams Internals",
+    "section": "The Issue I Worked On",
+    "text": "The Issue I Worked On\n\nThe issue I found was in the StreamsConfig class.\nSome Kafka Streams configuration properties are not meant to be overridden by users, but:\n\nThere’s no feedback to users that their custom values are being ignored.\n\nThe task was to:\n\nAdd a warning log message whenever a user sets one of these restricted properties.\nThe log should inform that their value is ignored and Kafka Streams has overridden it internally."
+  },
+  {
+    "objectID": "posts/learning-kafka/day3.html#what-i-did-today",
+    "href": "posts/learning-kafka/day3.html#what-i-did-today",
+    "title": "Day 3 - Diving into Apache Kafka Streams Internals",
+    "section": "What I Did Today",
+    "text": "What I Did Today\n\nForked the Apache Kafka GitHub repository.\nSet up my local dev environment.\nNavigated and explored the streams module.\nFocused on understanding how StreamsConfig validates and handles config values.\nStarted working on the logging logic to notify users when restricted configs are overridden.\n\nI ended up spending the entire day on this one issue, reading the code, understanding the architecture, and slowly making sense of the system.\nIt was challenging but rewarding and exactly the kind of exposure I was hoping for when I set this goal.\n\nMore tomorrow!!!"
+  },
+  {
+    "objectID": "posts/learning-kafka/index.html",
+    "href": "posts/learning-kafka/index.html",
+    "title": "Learning Kafka",
+    "section": "",
+    "text": "Diving into Apache Kafka — everyday learning journey through concepts, challenges, and real-world applications.\nEach day unpacks a new learning, building my understanding step by step.\nIt’s all about that “Data in Motion”. Let’s get started.\n\n\n\n\n\n\n\n\n\nDay 3 - Diving into Apache Kafka Streams Internals\n\n\n\n\n\nExploring Kafka Streams and investigating a StreamsConfig issue in Open Source Kafka.\n\n\n\n\n\nJul 9, 2025\n\n\n\n\n\n\n\nDay 2 - Kafka Brokers, Clusters, and Retention\n\n\n\n\n\nLearning about Kafka brokers, cluster architecture, leaders and followers, and message retention.\n\n\n\n\n\nJul 8, 2025\n\n\n\n\n\n\n\nDay 1 - Introduction to Apache Kafka\n\n\n\n\n\nIntroduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.\n\n\n\n\n\nJul 7, 2025\n\n\n\n\n\n\n\nDay 0 - The Commitment to Kafka\n\n\n\n\n\nKickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.\n\n\n\n\n\nJul 6, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "posts/learning-kafka/day2.html",
     "href": "posts/learning-kafka/day2.html",
     "title": "Day 2 - Kafka Brokers, Clusters, and Retention",
@@ -229,13 +264,6 @@
     "title": "Day 2 - Kafka Brokers, Clusters, and Retention",
     "section": "",
     "text": "Continuing from where I left off yesterday, diving deeper into Chapter 1 of Kafka: The Definitive Guide.\n\n\n\nA single instance of a Kafka server is called a broker.\nThe broker handles:\n\nReceiving messages from producers\nAssigning offsets to messages\nWriting messages to disk\nResponding to consumer requests for partitions\n\nEach broker manages multiple partitions.\nKafka brokers operate as part of a cluster by default.\n\n\n\n\n\nA cluster is a group of Kafka brokers working together.\nOne broker in the cluster acts as the controller.\n\nThe controller is automatically elected from live brokers.\nResponsibilities include:\n\nAssigning partitions to brokers\nMonitoring broker failures\n\n\nBefore Kafka 4.0:\n\nApache ZooKeeper was used to manage metadata and broker coordination.\n\nNow (in KRaft mode):\n\nKafka brokers self-manage metadata\nThis is done using Raft — a consensus algorithm for distributed state replication.\n\n\n\n\n\n\nEach partition has a leader — a single broker responsible for that partition.\nAdditional brokers are assigned as followers of that partition.\nReplication enables:\n\nRedundancy of data\nFailover support — followers can take over as leader if needed\n\nProducers:\n\nMust send data only to the leader of the partition\n\nConsumers:\n\nCan read from either the leader or the followers\n\n\n\n\n\n\nKafka’s key feature is durable retention of messages.\nBrokers are configured with default retention policies:\n\nRetention based on time (e.g., 7 days)\nRetention based on size (e.g., 1 GB per partition)\n\nOnce retention limits are hit:\n\nOld messages are deleted\n\nIndividual topics can override global retention settings.\nSpecial case: Log Compaction\n\nKafka retains only the latest message for each unique key.\nUseful for changelog or stateful updates."
-  },
-  {
-    "objectID": "posts/learning-kafka/index.html",
-    "href": "posts/learning-kafka/index.html",
-    "title": "Learning Kafka",
-    "section": "",
-    "text": "Diving into Apache Kafka — everyday learning journey through concepts, challenges, and real-world applications.\nEach day unpacks a new learning, building my understanding step by step.\nIt’s all about that “Data in Motion”. Let’s get started.\n\n\n\n\n\n\n\n\n\nDay 2 - Kafka Brokers, Clusters, and Retention\n\n\n\n\n\nLearning about Kafka brokers, cluster architecture, leaders and followers, and message retention.\n\n\n\n\n\nJul 8, 2025\n\n\n\n\n\n\n\nDay 1 - Introduction to Apache Kafka\n\n\n\n\n\nIntroduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.\n\n\n\n\n\nJul 7, 2025\n\n\n\n\n\n\n\nDay 0 - The Commitment to Kafka\n\n\n\n\n\nKickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.\n\n\n\n\n\nJul 6, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/learning-kafka/day1.html",
