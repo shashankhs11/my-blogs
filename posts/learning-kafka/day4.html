@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shashank Hosahalli Shivamurthy">
+<meta name="dcterms.date" content="2025-07-10">
+<meta name="description" content="Hands-on with Kafka Streams on Confluent Cloud, diving into architecture, and opening my first PR to the Apache Kafka repository.">
 
-<title>Learning Kafka – Shashank’s Blogs</title>
+<title>Day 4 - Kafka Streams: Hands-on, Architecture &amp; First PR – Shashank’s Blogs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,7 +100,7 @@ window.Quarto = {
 <span class="menu-text">30 Days of Hell</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/learning-kafka/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts/learning-kafka/index.html"> 
 <span class="menu-text">Learning Apache Kafka</span></a>
   </li>  
 </ul>
@@ -187,22 +130,37 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learning Kafka</h1>
+<h1 class="title">Day 4 - Kafka Streams: Hands-on, Architecture &amp; First PR</h1>
 </div>
 
+<div>
+  <div class="description">
+    Hands-on with Kafka Streams on Confluent Cloud, diving into architecture, and opening my first PR to the Apache Kafka repository.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shashank Hosahalli Shivamurthy </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -212,120 +170,87 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Diving into Apache Kafka</strong> — everyday learning journey through concepts, challenges, and real-world applications.</p>
-<p>Each day unpacks a new learning, building my understanding step by step.</p>
-<p>It’s all about that “Data in Motion”. Let’s get started.</p>
+<section id="day-4---kafka-streams-deep-dive-first-pr" class="level2">
+<h2 class="anchored" data-anchor-id="day-4---kafka-streams-deep-dive-first-pr">Day 4 - Kafka Streams Deep Dive &amp; First PR</h2>
+<p>Today was all about <strong>Kafka Streams</strong> — and I was pumped.</p>
+<p>Yesterday’s investigation into an open issue in the Kafka codebase really motivated me. I literally woke up thinking about it.</p>
+<hr>
+<section id="kafka-streams-course-confluent" class="level3">
+<h3 class="anchored" data-anchor-id="kafka-streams-course-confluent">Kafka Streams Course (Confluent)</h3>
+<ul>
+<li>Started the <strong>Kafka Streams course by Confluent</strong> to understand:
+<ul>
+<li>What Kafka Streams is used for</li>
+<li>The problem it solves</li>
+<li>Its overall architecture and workflow</li>
+</ul></li>
+<li>Key takeaway:
+<ul>
+<li>Kafka Streams is a <strong>client-side library</strong> for real-time stream processing directly within your app</li>
+<li>It’s used to transform, filter, aggregate, and route data between Kafka topics</li>
+<li>No separate cluster — lightweight and powerful</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="first-kafka-streams-app" class="level3">
+<h3 class="anchored" data-anchor-id="first-kafka-streams-app">First Kafka Streams App</h3>
+<ul>
+<li>Built a simple Kafka Streams application on <strong>Confluent Cloud</strong></li>
+<li>What it did:
+<ul>
+<li>Consumed messages from a topic</li>
+<li>Applied basic filtering logic</li>
+<li>Wrote results to a new topic</li>
+</ul></li>
+<li>Explored configurations, checked logs, and observed behavior</li>
+<li>This helped a lot in understanding the config behavior tied to the open issue I’m working on</li>
+</ul>
+<hr>
+</section>
+<section id="deep-dive-into-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="deep-dive-into-architecture">Deep Dive into Architecture</h3>
+<ul>
+<li>Watched a <strong>Kafka Streams Architecture &amp; Deep Dive</strong> talk on Confluent’s YouTube channel</li>
+<li>Also read through the <strong>official documentation</strong>
+<ul>
+<li>It’s surprisingly clean and well-written</li>
+<li>Helped cement concepts like state stores, repartitioning, topology, and thread model</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="revisiting-the-issue" class="level3">
+<h3 class="anchored" data-anchor-id="revisiting-the-issue">Revisiting the Issue</h3>
+<ul>
+<li>Returned to the open issue in the Kafka repo
+<ul>
+<li>Re-read the discussion</li>
+<li>Found an <strong>old PR</strong> that someone had started but abandoned midway</li>
+</ul></li>
+<li>Carefully traced through the codebase again with more clarity
+<ul>
+<li>Focused on how <code>StreamsConfig</code> handles internal vs.&nbsp;user-overridden configs</li>
+<li>Ran tests and validated config behavior</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="first-pr-opened" class="level3">
+<h3 class="anchored" data-anchor-id="first-pr-opened">First PR Opened</h3>
+<p>After a lot of hours, debugging, and local tests — I opened my <strong>first-ever pull request</strong> to the <strong>Apache Kafka GitHub repository</strong>.</p>
+<p>Need to work towards getting it approved and merged. That’s the next goal.</p>
+<p>It was a surreal moment, and I am incredibly excited for what’s ahead.</p>
+<blockquote class="blockquote">
+<p>One small PR for Kafka, one giant leap for my open-source journey, lol</p>
+</blockquote>
+<p>More learning and more contributions to come. Lesssssgoooooo!!!</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1752130800000" data-listing-file-modified-sort="1752214040564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="337">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day4.html" class="no-external">Day 4 - Kafka Streams: Hands-on, Architecture &amp; First PR</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day4.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day4.html" class="no-external">Hands-on with Kafka Streams on Confluent Cloud, diving into architecture, and opening my first PR to the Apache Kafka repository.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day4.html" class="no-external">
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1752044400000" data-listing-file-modified-sort="1752124938751" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="307">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day3.html" class="no-external">Day 3 - Diving into Apache Kafka Streams Internals</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day3.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day3.html" class="no-external">Exploring Kafka Streams and investigating a StreamsConfig issue in Open Source Kafka.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day3.html" class="no-external">
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1751958000000" data-listing-file-modified-sort="1752025010942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Day 2 - Kafka Brokers, Clusters, and Retention</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">Learning about Kafka brokers, cluster architecture, leaders and followers, and message retention.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day2.html" class="no-external">
-<div class="listing-date">
-Jul 8, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1751871600000" data-listing-file-modified-sort="1751939062256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="635">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Day 1 - Introduction to Apache Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">Introduction to Kafka, pub/sub systems, messages, schemas, topics, producers, and consumers.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day1.html" class="no-external">
-<div class="listing-date">
-Jul 7, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1751785200000" data-listing-file-modified-sort="1751937252786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Day 0 - The Commitment to Kafka</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../posts/learning-kafka/day0.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">Kickoff to learning Apache Kafka. Outlining goals, daily actions, and first notes from the book.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../posts/learning-kafka/day0.html" class="no-external">
-<div class="listing-date">
-Jul 6, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
